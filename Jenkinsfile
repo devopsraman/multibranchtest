@@ -14,7 +14,7 @@ if  (env.BRANCH_NAME != 'master') {
     } // master branch / production
     else { 
         uat()
-        )
+        
     }
 }
 
