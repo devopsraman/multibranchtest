@@ -16,7 +16,7 @@ if  (env.BRANCH_NAME != 'master') {
         uat()
         
     }
-}
+
 
 def isPRMergeBuild() {
     return (env.BRANCH_NAME ==~ /^PR-\d+$/)
