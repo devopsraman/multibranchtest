@@ -21,7 +21,7 @@ if  (env.BRANCH_NAME != 'master') {
 def isPRMergeBuild() {
     return (env.BRANCH_NAME ==~ /^PR-\d+$/)
 
-
+}
     def checkout () {
     stage 'Checkout code'
     context="continuous-integration/jenkins/"
