@@ -28,18 +28,19 @@ def isPRMergeBuild() {
     context += isPRMergeBuild()?"pr-merge/checkout":"branch/checkout"
     checkout scm
     setBuildStatus ("${context}", 'Checking out completed', 'SUCCESS')
-}
+         }
 
 def build() {
     stage 'Build'
     println 'This happens only on master'
-}
+         }
 def test() {
     stage 'Testing'
     println 'This happens only on Testing env'
-}
+        }
 
 def uat() {
     stage 'Build'
     println 'This happens only on UAT'
+        }
 }
