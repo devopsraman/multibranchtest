@@ -43,4 +43,4 @@ def isPRMergeBuild() {
     stage 'Build'
     println 'This happens only on UAT'
     }
-}
+
