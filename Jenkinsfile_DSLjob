@@ -1,0 +1,47 @@
+ properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '250')), 
+    parameters([string(defaultValue: 'master', description: 'This could be a branch name, tag name or commit id', name: 'GIT_REFERENCE_VALUE', trim: false), 
+    choice(choices: "testing\nrelease\nupstream", description: 'test', name: 'Test'), 
+     booleanParam(defaultValue: false, description: 'test', name: 'TEst'), 
+     booleanParam(defaultValue: true, description: 'test', name: 'Test'), 
+     booleanParam(defaultValue: true, description: 'test', name: 'Test'), booleanParam(defaultValue: false, description: 'Test', name: 'Test'), 
+    booleanParam(defaultValue: false, description: 'Test', name: 'Test'), 
+    [$class: 'LabelParameterDefinition', allNodesMatchingLabel: false, defaultValue: 'controller ', description: '''Choose one of:
+            1 
+            2
+            3''', name: 'LABEL', nodeEligibility: [$class: 'AllNodeEligibility'], triggerIfResult: 'allCases']])])
+    
+    pipeline {
+        agent { label'1' }
+        stages {
+         stage("checkout") {
+            steps {
+                    
+                       
+                    checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '123d345435435', url: 'https://github.com/devopsraman/multibranchtest.git']]])
+                 
+                
+            }
+            }
+          
+         stage("build") {
+            steps {
+                sh '''
+                    ls -ltr
+                    '''
+            }
+         }
+           stage("PostSteps") {
+               steps{
+                     cleanWs()
+                }
+           }
+        
+            
+            
+        }
+        
+        
+        
+      
+        
+    }
